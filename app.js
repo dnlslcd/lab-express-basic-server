@@ -1,9 +1,7 @@
 // IMPORT PACKAGES
 // Here you should import the required packages for your Express app: `express` and `morgan`
 const express = require('express');
-const morgan = require('morgan');
 const logger = require('morgan');
-
 
 // CREATE EXPRESS APP
 // Here you should create your Express app:
@@ -15,15 +13,22 @@ const app = express();
 // Here you should set up the required middleware:
 app.use(express.static('public')); // to serve static files from the `public` folder
 app.use(express.json()); // to parse incoming requests with JSON payloads
-app.use(morgan('dev')); // 'morgan' logger to log all incoming requests
+app.use(logger('dev')); // 'morgan' logger to log all incoming requests
 
 
 
 // ROUTES
 // Start defining your routes here:
+// Home Route:
 app.get('/', (req, res)=>{
-    res.send(__dirname + '/views/home.html');
+    res.sendFile(__dirname + '/views/home.html');
 });
+
+// Blog Route:
+app.get('/blog', (req, res)=>{
+    res.sendFile(__dirname + '/views/blog.html');
+});
+
 
 
 // START THE SERVER
