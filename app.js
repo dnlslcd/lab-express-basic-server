@@ -21,7 +21,9 @@ app.use(morgan('dev')); // 'morgan' logger to log all incoming requests
 
 // ROUTES
 // Start defining your routes here:
-
+app.get('/', (req, res)=>{
+    res.send(__dirname + '/views/home.html');
+});
 
 
 // START THE SERVER
