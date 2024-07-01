@@ -29,6 +29,11 @@ app.get('/blog', (req, res)=>{
     res.sendFile(__dirname + '/views/blog.html');
 });
 
+// JSON
+app.get('/api/projects', (req, res)=>{
+    res.json('/data/projects.json');
+})
+
 
 
 // START THE SERVER
