@@ -3,6 +3,10 @@
 const express = require('express');
 const logger = require('morgan');
 
+// Variables para el JSON
+const fs = require('fs');
+const path = require('path');
+
 // CREATE EXPRESS APP
 // Here you should create your Express app:
 const app = express();
@@ -29,9 +33,16 @@ app.get('/blog', (req, res)=>{
     res.sendFile(__dirname + '/views/blog.html');
 });
 
-// JSON
+// JSON Projects
 app.get('/api/projects', (req, res)=>{
-    res.json('/data/projects.json');
+    const projects = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/projects.json')));
+    res.json(projects);
+})
+
+// JSON Articles
+app.get('/api/articles', (req, res)=>{
+    const articles = JSON.parse(fs.readFileSync(path.join(__dirname, '/data/articles.json')));
+    res.json(articles);
 })
 
 
