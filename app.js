@@ -4,8 +4,8 @@ const express = require('express');
 const logger = require('morgan');
 
 // Variables para el JSON
-const fs = require('fs');
-const path = require('path');
+// const fs = require('fs');
+// const path = require('path');
 
 // CREATE EXPRESS APP
 // Here you should create your Express app:
@@ -35,17 +35,20 @@ app.get('/blog', (req, res)=>{
 
 // JSON Projects
 app.get('/api/projects', (req, res)=>{
-    const projects = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/projects.json')));
+    const projects = require('./data/projects.json');
+    // const projects = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/projects.json')));
     res.json(projects);
 })
 
 // JSON Articles
 app.get('/api/articles', (req, res)=>{
-    const articles = JSON.parse(fs.readFileSync(path.join(__dirname, '/data/articles.json')));
+    const articles = require('./data/articles.json');
+    // const articles = JSON.parse(fs.readFileSync(path.join(__dirname, '/data/articles.json')));
     res.json(articles);
 })
 
-
+// 404 Route
+// app.use((req, res)=>{
 
 // START THE SERVER
 // Make your Express server listen on port 5005:
