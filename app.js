@@ -48,7 +48,9 @@ app.get('/api/articles', (req, res)=>{
 })
 
 // 404 Route
-// app.use((req, res)=>{
+ app.use((req, res)=>{
+    res.status(404).sendFile(__dirname + '/views/not-found.html');
+ });
 
 // START THE SERVER
 // Make your Express server listen on port 5005:
